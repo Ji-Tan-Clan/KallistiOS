@@ -61,7 +61,7 @@ ifdef MACOS
   ifdef MACOS_MOJAVE_AND_UP
     # Starting from macOS Mojave (10.14+)
     sdkroot = $(shell xcrun --sdk macosx --show-sdk-path)
-    macos_extra_args = -isysroot $(sdkroot)
+    macos_extra_args = -DHAVE_DLFCN_H -isysroot $(sdkroot)
     CC += -Wno-nullability-completeness -Wno-missing-braces $(macos_extra_args)
     CXX += -stdlib=libc++ -mmacosx-version-min=10.14 $(macos_extra_args)
     SH_CC_FOR_TARGET += $(macos_extra_args)
